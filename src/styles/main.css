@@ -1,0 +1,72 @@
+:root {
+    --text: #16100c;
+    --background: #faf8f6;
+    --primary: #EE8339;
+    --secondary: #4A3931;
+    --accent: #312020;
+    --button: #645AA4;
+    --text-invert: #f2ece8;
+    --background-invert: #2b2a33;
+    --primary-invert: #EE6220;
+    --secondary-invert: #313131;
+    --accent-invert: #EEBD08;
+    --button-invert: #98C8DE;
+}
+
+#app.theme-dark {
+    --text: #f2ece8;
+    --background: #2b2a33;
+    --primary: #EE6220;
+    --secondary: #313131;
+    --accent: #EEBD08;
+    --button: #98C8DE;
+    --text-invert: #16100c;
+    --background-invert: #faf8f6;
+    --primary-invert: #EE8339;
+    --secondary-invert: #4A3931;
+    --accent-invert: #312020;
+    --button-invert: #645AA4;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+#root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+#app {
+    color: var(--text);
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex:1;
+}
+
+#content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-inline: 1rem;
+}
+
+table,
+th,
+td {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid var(--text);
+}
