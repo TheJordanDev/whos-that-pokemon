@@ -5,7 +5,8 @@ import { Link, useLocation } from "react-router-dom";
 
 const HeaderStyle = emotionStyled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     justify-items: center;
     align-items: center;
     background-color: #333;
@@ -25,42 +26,49 @@ export const Header = () => {
 
     return (
         <HeaderStyle>
-            <div
+                        <div
                 style={{
-                    gridColumn: 1,
+                    gridRow: 1,
+                    gridColumn: "span 2",
                     width: "100%",
-                    display: "flex",
-                    justifyContent: "flex-start",
-                    alignContent: "center"
+                    textAlign: "center",
                 }}
-            >
-                <ThemeToggle/>
-            </div>
-            <div
-                style={{gridColumn: 2}}
             >
                 {currentPage === "/" ? 
                     <h1
                         style={{ userSelect: "none"}}
                     >
-                        Home
+                        Who's that Pokemon?
                     </h1> :
                     <h1>                        
                         <Link
                             style={{ cursor: "pointer", userSelect: "none", textDecoration: "none", color: "white"}}
                             to="/"
                             >
-                            Home
+                            Who's that Pokemon?
                         </Link>
                     </h1>
                 }
             </div>
             <div
                 style={{
-                    gridColumn: 3,
+                    gridColumn: 1,
+                    gridRow: 2,
                     width: "100%",
                     display: "flex",
-                    justifyContent: "flex-end",
+                    justifyContent: "center",
+                    alignContent: "center"
+                }}
+            >
+                <ThemeToggle/>
+            </div>
+            <div
+                style={{
+                    gridColumn: 2,
+                    gridRow: 2,
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "center",
                     alignContent: "center"
                 }}
             >

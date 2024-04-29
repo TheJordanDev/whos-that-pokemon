@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { useChoseGenerations } from "../../use/useChoseGenerations";
-import { TypeGeneration, TypePokemon } from "../../types";
+import { TypePokemon } from "../../types";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { getTrad, hasTrad } from "../../data/helper";
@@ -41,10 +41,9 @@ const HistoryModal = (props:HistoryModalProps) => {
                     backgroundColor: "white",
                     padding: "20px",
                     borderRadius: "10px",
-                    minWidth: "50%",
                     minHeight: "50%",
-                    maxWidth: "80%",
-                    maxHeight: "80%",
+                    maxHeight: "90%",
+                    width: "90%",
                     overflow: "auto",
                     scrollbarWidth: "thin"
                 }}
@@ -87,7 +86,12 @@ const HistoryModal = (props:HistoryModalProps) => {
                         </tr>
                     </tbody>
                 </table>
-                <table>
+                <table
+                    style={{
+                        width: "100%",
+                        borderCollapse: "collapse",
+                    }}
+                >
                     <thead>
                         <tr>
                             <th>Pokemon</th>
@@ -230,7 +234,7 @@ export const GuessTheSilhouette = () => {
         return getTrad(language, currentPokemon?.name, currentPokemon?.names);
     }
 
-    const {selectedGenerations, allGenerations, toggleGeneration, generationsIco, renderChoices} = useChoseGenerations({language:language,finishCallback:startGame});
+    const {selectedGenerations, renderChoices} = useChoseGenerations({language:language,finishCallback:startGame});
 
     if (!finishedChosing) {
         return [renderChoices];

@@ -12,6 +12,7 @@ const Select = emotionStyled.select`
     border: 2px solid navy;
     border-radius: 10px;
     background-color: white;
+    width: 100%;
 `;
 
 export const LanguageSelector = () => {
@@ -31,6 +32,8 @@ export const LanguageSelector = () => {
         <Select 
             onChange={handleChange}
             defaultValue={getLanguage(language)?.data?.name}
+            style={{
+            }}
         >
             {languages.map((_language) => (
                 <option key={_language.data.id} value={_language.data.name}>

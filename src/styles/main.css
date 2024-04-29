@@ -34,25 +34,31 @@
     box-sizing: border-box;
 }
 
-body {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-#root {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+html, body {
     width: 100%;
+    min-height: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: thin;
+    flex: 1;
 }
+
+#root, #app {
+    color: var(--text);
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    height: auto;
+    flex: 1;
+}
+
 #app {
     color: var(--text);
     background-color: var(--background);
     display: flex;
     flex-direction: column;
-    height: 100%;
-    flex:1;
 }
 
 #content {
@@ -63,10 +69,24 @@ body {
     padding-inline: 1rem;
 }
 
-table,
-th,
-td {
-    border-collapse: collapse;
-    width: 100%;
-    border: 1px solid var(--text);
-}
+datalist {
+    position: absolute;
+    max-height: 20em;
+    border: 0 none;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+  datalist option {
+    font-size: 0.8em;
+    padding: 0.3em 1em;
+    background-color: #ccc;
+    cursor: pointer;
+  }
+  
+  /* option active styles */
+  datalist option:hover, datalist option:focus {
+    color: #fff;
+    background-color: #036;
+    outline: 0 none;
+  }

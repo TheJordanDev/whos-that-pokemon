@@ -1,10 +1,7 @@
-import { useSelector } from "react-redux";
-import { RootState } from "../../store";
-import { useChoseGenerations } from "../../use/useChoseGenerations";
 import { useState } from "react";
 import { HistoryReason, PokemonHistoryItem, usePokemonHistory } from "../../use/usePokemonHistory";
-import { TypeGeneration, TypePokemon } from "../../types";
-import { getTrad, getTypeGradient, pokemonsToSpecies } from "../../data/helper";
+import { TypePokemon } from "../../types";
+import { getTrad, getTypeGradient } from "../../data/helper";
 import { useGuessThatCry } from "../../use/useGuessThatCry";
 import { Button } from "../_partial/Button";
 
@@ -43,10 +40,9 @@ const HistoryModal = (props:HistoryModalProps) => {
                     backgroundColor: "white",
                     padding: "20px",
                     borderRadius: "10px",
-                    minWidth: "50%",
                     minHeight: "50%",
-                    maxWidth: "80%",
                     maxHeight: "80%",
+                    width: "90%",
                     overflow: "auto",
                     scrollbarWidth: "thin"
                 }}
@@ -129,7 +125,8 @@ const HistoryModal = (props:HistoryModalProps) => {
                                         </span>
                                         <img
                                             style={{
-                                                width: "10em",
+                                                width: "100%",
+                                                maxWidth: "10em",
                                                 aspectRatio: "1/1",
                                                 imageRendering: "pixelated"
                                             }}
@@ -162,7 +159,8 @@ const HistoryModal = (props:HistoryModalProps) => {
                                         </span>
                                         <img
                                             style={{
-                                                width: "10em",
+                                                width: "100%",
+                                                maxWidth: "10em",
                                                 aspectRatio: "1/1",
                                                 imageRendering: "pixelated"
                                             }}
@@ -191,24 +189,12 @@ export const GuessTheCry = () => {
 
     const {
         language,
-        selectedGenerations,
-        allGenerations,
-        toggleGeneration,
-        generationsIco,
         finishedChosing,
-        setFinishedChosing,
-        addPokemon,
         history,
         showHistory,
         setShowHistory,
-        pokemons,
-        setPokemons,
-        remainingPokemons,
-        setRemainingPokemons,
         currentPokemon,
         choices,
-        setCurrentPokemon,
-        startGame,
         guessCry,
         playAudio,
         currentVolume,

@@ -1,11 +1,27 @@
 import { useEffect, useMemo, useState } from "react";
 import { fetchGenerations, getRandomPokemon, getTrad } from "../data/helper";
 import { TypeGeneration, TypeLanguage } from "../types";
+import emotionStyled from "@emotion/styled";
 
 type GenMemoProps = {
     language:string;
     finishCallback:()=>Promise<void>;
 }
+
+const GenButton = emotionStyled.button`
+    font-size: 1.5em;
+    padding: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: unset;
+    border-radius: 10px;
+    margin: 10px;
+    width: 150px;
+    aspect-ratio: 1/1;
+`;
 
 export const useChoseGenerations = ({language, finishCallback}:GenMemoProps) => {
     const [allGenerations, setAllGenerations] = useState<TypeGeneration[]>([]);
@@ -60,35 +76,36 @@ export const useChoseGenerations = ({language, finishCallback}:GenMemoProps) => 
                     {allGenerations.map((generation:TypeGeneration) => {
                         let src = generationsIco.get(generation) || "";
                         return (
-                            <button
+                            <GenButton
                                 key={generation.gen}
                                 style={{
-                                    fontSize: "1.5em",
-                                    padding: "10px",
                                     backgroundColor: selectedGenerations.includes(generation) ? "green" : "white",
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    justifyContent: "center",
-                                    alignItems: "center",
-                                    border: "unset",
-                                    borderRadius: "10px",
-                                    margin: "10px"
                                 }}
                                 onClick={() => {
                                     toggleGeneration(generation);
                                 }}
                             >
-                                {getTrad(language, generation?.gen, generation?.names)}
+                                <span
+                                    style={{
+                                        fontSize: "1rem",
+                                        width: "100%",
+                                        userSelect: "none",
+                                    }}
+                                >
+                                    {getTrad(language, generation?.gen, generation?.names)}
+                                </span>
                                 <img
                                     style={{
-                                        width: "100px",
-                                        height: "100px",
-                                        imageRendering: "pixelated"
+                                        maxHeight: "100%",
+                                        height: "100%",
+                                        aspectRatio: "1/1",
+                                        imageRendering: "pixelated",
+                                        objectFit: "contain",
                                     }}
                                     src={src}
                                     alt={getTrad(language, generation?.gen, generation?.names)}
                                 />
-                            </button>
+                            </GenButton>
                         )
                     })}
                 </div>
